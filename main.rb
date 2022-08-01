@@ -33,10 +33,40 @@ class Sandwich
 
         sleep 4
     end
-end 
+end
+
+class Order
+    attr_accessor :contents, :total_price, :reciept_wanted
+
+    def initialize(contents, total_price, reciept_wanted)
+        @contents = contents
+        @total_price = total_price
+        @reciept_wanted = reciept_wanted
+    end
+
+    def print_reciept()
+        if reciept_wanted
+            puts "\n\e[45mReciept\e[0m"
+            puts "----------------"
+            puts "\e[44mContents\e[0m"
+            puts "----------------"
+            puts contents
+            puts "----------------"
+            puts "\e[44mTotal Price\e[0m"
+            puts "----------------"
+            puts total_price
+        else
+            puts "A reciept was not wanted!"
+        end
+    end
+
+end
 
 mySandwich = Sandwich.new("The Big Pro Double Extra", false, 8.62, 32)
 mySandwich.log
 
 miniSandwich = Sandwich.new("The Small Lite Half Normal", true, 4.31, 16)
 miniSandwich.log
+
+orderA = Order.new(mySandwich.name, mySandwich.price, true)
+orderA.print_reciept()
