@@ -50,7 +50,7 @@ class Order
             puts "----------------"
             puts "\e[44mContents\e[0m"
             puts "----------------"
-            puts contents
+            puts "- #{contents}"
             puts "----------------"
             puts "\e[44mTotal Price\e[0m"
             puts "----------------"
@@ -68,5 +68,10 @@ mySandwich.log
 miniSandwich = Sandwich.new("The Small Lite Half Normal", true, 4.31, 16)
 miniSandwich.log
 
-orderA = Order.new(mySandwich.name, mySandwich.price, true)
+orderA = Order.new(
+    "#{mySandwich.name}\n- #{miniSandwich.name}", 
+    mySandwich.price + miniSandwich.price, 
+    true
+)
+
 orderA.print_reciept()
